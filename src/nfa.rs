@@ -15,6 +15,10 @@ pub fn run(states: Vec<Vec<(char, Vec<usize>)>>, accepted: (usize, Vec<usize>), 
     for c in input_string.chars() {
         let mut new_state: Vec<usize> = vec![];
         for next in current_states {
+            if next >= states.len() {
+                print!("State Machine is failed. It should not be executet!");
+                return false;
+            }
             let (next_states, corrupt) = step_nfa(&states[next], c);
             if !corrupt {
                 new_state.extend(next_states.iter().clone());

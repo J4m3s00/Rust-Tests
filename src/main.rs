@@ -6,7 +6,7 @@ fn main() {
 
     //DFA
     ////////////////        q0                      q1
-    let nodes = vec![vec![('0', 0), ('1', 4)], vec![('0', 0), ('1', 1)]];
+    let nodes = vec![vec![('0', 0), ('1', 1)], vec![('0', 0), ('1', 1)]];
     let accepted = (0, vec![1]);
     let input = "001011";
 

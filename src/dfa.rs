@@ -12,12 +12,14 @@ fn step_nfa(current_state: &Vec<(char, usize)>, current_char: char) -> (usize, b
 pub fn run(states: Vec<Vec<(char, usize)>>, accepted: (usize, Vec<usize>), input_text: &str) -> bool
 {
     let mut current_state = accepted.0;
-    if current_state >= states.len() {
-        print!("State Machine is failed. It should not be executet!");
-        return false;
-    }
+    
     
     for c in input_text.chars() { 
+        if current_state >= states.len() {
+            print!("State Machine has failed. It should not be executet!");
+            return false;
+        }
+        
         let (next_state, corrupt) = step_nfa(&states[current_state], c);
         current_state = next_state;
         if corrupt { print!("No next state found! \nStopping NFA!\n"); return false; }
